@@ -4,15 +4,24 @@
   <script>
     var turtle1 = null;
     var turtle2 = null;
+    var turtle3 = null;
+    var started = false;
+//This will make sure the turtles move, together with the "var started = false;"
+//And setTimeout(move,800); 
+    function go() {
+      if (!started) {
+        started = true;
+        move();
+      }
+    }
 
 //This function will both select a random turtle and move it.
     function move() {
       var n = Math.floor(1 + Math.random() * 3); 
       var id = 'turtle' + n;
-      console.log(id);
       var obj  = document.getElementById(id);
-      console.log(obj);
       obj.style.left = (parseInt(obj.style.left) + 10) + 'px';
+      setTimeout(move,800);
     }
 
 //init will set the style.left to 0 once the page has started up.
@@ -60,10 +69,10 @@
 </head>
 <body>
 <div id="go">
-<a href="javascript:move();"><img src="images/go.jpg"/></a>
+<a href="javascript:go();"><img src="images/go.jpg"/></a>
 </div>
-<div id="turtle1"><img src="images/turtle.png"/></div>
-<div id="turtle2"><img src="images/turtle.png"/></div>
-<div id="turtle3"><img src="images/turtle.png"/></div>
+<div id="turtle1"><img src="images/turtle1.png"/></div>
+<div id="turtle2"><img src="images/turtle2.png"/></div>
+<div id="turtle3"><img src="images/turtle3.png"/></div>
 </body>
 </ttmt>
