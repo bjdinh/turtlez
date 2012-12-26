@@ -2,12 +2,16 @@
 <head>
   <title>turtle</title>
   <script>
+    var score1 = 0;
+    var score2 = 0;
+    var score3 = 0;
     var turtle1 = null;
     var turtle2 = null;
     var turtle3 = null;
     var started = false;
+
 //This will make sure the turtles move, together with the "var started = false;"
-//And setTimeout(move,800); 
+//And setTimeout(move,300); 
     function go() {
       if (!started) {
         started = true;
@@ -21,7 +25,25 @@
       var id = 'turtle' + n;
       var obj  = document.getElementById(id);
       obj.style.left = (parseInt(obj.style.left) + 10) + 'px';
-      setTimeout(move,800);
+
+
+
+      if (id === 'turtle1') {
+        score1 = score1 + 1;
+      } else if (id === 'turtle2') {
+        score2 = score2 + 1;
+      } else if (id === 'turtle3') {
+        score3 = score3 + 1;
+      }
+
+      document.getElementById("score1").innerHTML = "" + score1;
+      document.getElementById("score2").innerHTML = "" + score2;
+      document.getElementById("score3").innerHTML = "" + score3;
+    
+      if (score1 >= 100 || score2 >= 100 || score3 >= 100) { alert("We have a winner!");
+      } else { 
+        setTimeout(move,100);
+      }    
     }
 
 //init will set the style.left to 0 once the page has started up.
@@ -65,11 +87,17 @@
       left: 0px;
       bottom: 10px;
       width: 100px;
+    }
   </style>
 </head>
 <body>
+<body bgcolor=#009999>
 <div id="go">
 <a href="javascript:go();"><img src="images/go.jpg"/></a>
+turtle 1: <span id="score1">0</span>
+turtle 2: <span id="score2">0</span>
+turtle 3: <span id="score3">0</span>
+
 </div>
 <div id="turtle1"><img src="images/turtle1.png"/></div>
 <div id="turtle2"><img src="images/turtle2.png"/></div>
