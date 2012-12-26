@@ -88,16 +88,28 @@
       bottom: 10px;
       width: 100px;
     }
+    #score {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 100px;
+      height: 100px;
+      border: solid, black, 5px;
+    }
+    body {
+      background-color: #009999;
+      background-position: %50 %50;
+      background-repeat: repeat;
   </style>
 </head>
 <body>
-<body bgcolor=#009999>
+<div id="score">
+Turtle 1: <span id="score1">0</span>
+Turtle 2: <span id="score2">0</span>
+Turtle 3: <span id="score3">0</span>
+</div>
 <div id="go">
 <a href="javascript:go();"><img src="images/go.jpg"/></a>
-turtle 1: <span id="score1">0</span>
-turtle 2: <span id="score2">0</span>
-turtle 3: <span id="score3">0</span>
-
 </div>
 <div id="turtle1"><img src="images/turtle1.png"/></div>
 <div id="turtle2"><img src="images/turtle2.png"/></div>
