@@ -9,6 +9,12 @@
     var turtle2 = null;
     var turtle3 = null;
     var started = false;
+    var name1 = prompt("What is the name of player1?");
+    var name2 = prompt("What is the name of player2?");
+    var name3 = prompt("what is the name of player3?"); 
+    var windowWidth = window.innerWidth;   
+    var turtleLength = 295;
+
 
 //This will make sure the turtles move, together with the "var started = false;"
 //And setTimeout(move,300); 
@@ -24,7 +30,8 @@
       var n = Math.floor(1 + Math.random() * 3); 
       var id = 'turtle' + n;
       var obj  = document.getElementById(id);
-      obj.style.left = (parseInt(obj.style.left) + 10) + 'px';
+      var personalWindowmove = windowWidth/100;
+      obj.style.left = (parseInt(obj.style.left) + personalWindowmove) + 'px';
 
 
 
@@ -40,7 +47,12 @@
       document.getElementById("score2").innerHTML = "" + score2;
       document.getElementById("score3").innerHTML = "" + score3;
     
-      if (score1 >= 100 || score2 >= 100 || score3 >= 100) { alert("We have a winner!");
+      if (parseInt(turtle1.style.left) + turtleLength >= windowWidth) { 
+         alert( name1 + " is the winner!");
+      } else if (parseInt(turtle2.style.left) + turtleLength >= windowWidth) { 
+         alert( name2 + " is the winner!");
+      } else if (parseInt(turtle3.style.left) + turtleLength >= windowWidth) { 
+         alert( name3 + " is the winner!");
       } else { 
         setTimeout(move,100);
       }    
@@ -54,6 +66,10 @@
        turtle2.style.left = '0px';
        turtle3 = document.getElementById('turtle3');
        turtle3.style.left = '0px';
+
+       document.getElementById("name1").innerText = name1;
+       document.getElementById("name2").innerText = name2;
+       document.getElementById("name3").innerText = name3;
     }
 
     window.onload = init;
@@ -94,7 +110,12 @@
       bottom: 10px;
       width: 100px;
       height: 100px;
-      border: solid, black, 5px;
+      border-color: black;
+      border-width: 2px;
+      border-type: solid;
+      font-family: Verdana;
+      font-size: 16px;
+
     }
     body {
      background: url("https://raw.github.com/bjdinh/turtlez/master/images/bg.png") 50% 50% no-repeat;
@@ -103,9 +124,12 @@
 </head>
 <body>
 <div id="score">
-Turtle 1: <span id="score1">0</span>
-Turtle 2: <span id="score2">0</span>
-Turtle 3: <span id="score3">0</span>
+<span id="name1">name1</span>: <span id="score1">0</span>
+<br/>
+<span id="name2">name2</span>: <span id="score2">0</span>
+<br/>
+<span id="name3">name3</span>: <span id="score3">0</span>
+<br/>
 </div>
 <div id="go">
 <a href="javascript:go();"><img src="images/go.png"/></a>
